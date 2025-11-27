@@ -10,25 +10,25 @@ export default function ClientsList({ clients }: ClientsListProps) {
       <table className="w-full">
         <thead>
           <tr className="border-b border-gray-200">
-            <th className="text-left px-6 py-3 text-sm font-semibold text-gray-900">Name</th>
-            <th className="text-left px-6 py-3 text-sm font-semibold text-gray-900">Company</th>
-            <th className="text-left px-6 py-3 text-sm font-semibold text-gray-900">Phone</th>
-            <th className="text-left px-6 py-3 text-sm font-semibold text-gray-900">Email</th>
+            <th className="text-left py-3 text-sm font-semibold text-gray-900">Name</th>
+            <th className="text-left py-3 text-sm font-semibold text-gray-900">Company</th>
+            <th className="text-left py-3 text-sm font-semibold text-gray-900">Phone</th>
+            <th className="text-left py-3 text-sm font-semibold text-gray-900">Email</th>
           </tr>
         </thead>
         <tbody>
           {clients.map((client) => (
             <tr key={client.id} className="border-b border-gray-200 hover:bg-gray-50 transition-colors">
-              <td className="px-6 py-4 text-sm text-gray-900">
+              <td className="py-4 text-sm text-gray-900">
                 {client.first_name} {client.last_name}
               </td>
-              <td className="px-6 py-4 text-sm text-gray-600">
+              <td className="py-4 text-sm text-gray-600">
                 {client.company_name || '-'}
               </td>
-              <td className="px-6 py-4 text-sm text-gray-600">
+              <td className="py-4 text-sm text-gray-600">
                 {client.phone_number || '-'}
               </td>
-              <td className="px-6 py-4 text-sm text-gray-600">
+              <td className="py-4 text-sm text-gray-600">
                 {client.email || '-'}
               </td>
             </tr>
