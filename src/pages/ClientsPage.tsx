@@ -33,6 +33,7 @@ export default function ClientsPage() {
 
   const handleSaveClient = (newClient: Client) => {
     setClients([newClient, ...clients]);
+    setShowForm(false);
   };
 
   if (loading) {
@@ -53,12 +54,17 @@ export default function ClientsPage() {
   return (
     <>
       <Header
-        title="Clients"
+        title={showForm ? "New Client" : "Clients"}
         primaryButtonLabel="New Client"
         onPrimaryClick={() => setShowForm(true)}
       />
       <main className="flex-1 overflow-y-auto bg-white">
-        {clients.length === 0 ? (
+        {showForm ? (
+          <ClientForm
+            onClose={() => setShowForm(false)}
+            onSave={handleSaveClient}
+          />
+        ) : clients.length === 0 ? (
           <EmptyState onAddClick={() => setShowForm(true)} />
         ) : (
           <div className="p-6">
@@ -66,12 +72,6 @@ export default function ClientsPage() {
           </div>
         )}
       </main>
-      {showForm && (
-        <ClientForm
-          onClose={() => setShowForm(false)}
-          onSave={handleSaveClient}
-        />
-      )}
     </>
   );
 }

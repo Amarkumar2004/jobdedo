@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { X } from 'lucide-react';
 import { ClientFormData, Client } from '../types';
 import { supabase } from '../lib/supabase';
 
@@ -49,7 +48,6 @@ export default function ClientForm({ onClose, onSave }: ClientFormProps) {
       if (error) throw error;
 
       onSave(data);
-      onClose();
     } catch (err) {
       console.error('Error saving client:', err);
     } finally {
@@ -58,19 +56,8 @@ export default function ClientForm({ onClose, onSave }: ClientFormProps) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center pt-8 overflow-y-auto z-50">
-      <div className="bg-white rounded-lg shadow-lg w-full max-w-4xl">
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
-          <h2 className="text-2xl font-bold text-gray-900">New Client</h2>
-          <button
-            onClick={onClose}
-            className="p-1 hover:bg-gray-100 rounded-md transition-colors"
-          >
-            <X className="w-5 h-5 text-gray-600" />
-          </button>
-        </div>
-
-        <form onSubmit={handleSubmit} className="p-6 space-y-6">
+    <div className="w-full max-w-5xl mx-auto p-6">
+      <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Primary contact details</h3>
             <p className="text-sm text-gray-600 mb-4">Provide the main point of contact to ensure smooth communication and reliable client records.</p>
@@ -221,24 +208,23 @@ export default function ClientForm({ onClose, onSave }: ClientFormProps) {
             </label>
           </div>
 
-          <div className="flex gap-3 justify-end pt-4 border-t border-gray-200">
-            <button
-              type="button"
-              onClick={onClose}
-              className="px-6 py-2 border border-gray-300 text-gray-700 font-medium rounded-md hover:bg-gray-50 transition-colors"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              disabled={loading}
-              className="px-6 py-2 bg-green-700 hover:bg-green-800 text-white font-medium rounded-md transition-colors disabled:opacity-50"
-            >
-              {loading ? 'Saving...' : 'Save client'}
-            </button>
-          </div>
-        </form>
-      </div>
+        <div className="flex gap-3 justify-end pt-4 border-t border-gray-200">
+          <button
+            type="button"
+            onClick={onClose}
+            className="px-6 py-2 border border-gray-300 text-gray-700 font-medium rounded-md hover:bg-gray-50 transition-colors"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            disabled={loading}
+            className="px-6 py-2 bg-green-700 hover:bg-green-800 text-white font-medium rounded-md transition-colors disabled:opacity-50"
+          >
+            {loading ? 'Saving...' : 'Save client'}
+          </button>
+        </div>
+      </form>
     </div>
   );
 }

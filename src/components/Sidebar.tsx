@@ -56,21 +56,21 @@ interface SidebarProps {
 
 export default function Sidebar({ collapsed, onToggle, onNavigate, currentPage }: SidebarProps) {
   return (
-    <div className={`${collapsed ? 'w-20' : 'w-48'} bg-gray-50 border-r border-gray-200 flex flex-col h-screen transition-all duration-300`}>
-      <div className="p-4 border-b border-gray-200">
+    <div className={`${collapsed ? 'w-20' : 'w-48'} bg-gray-50 border-r border-gray-200 flex flex-col transition-all duration-300`}>
+      <div className="p-4 border-b border-gray-200 flex-shrink-0">
         <div className="w-10 h-10 bg-gray-900 rounded-lg flex items-center justify-center">
           <LayoutGrid className="w-6 h-6 text-white" />
         </div>
       </div>
 
       {!collapsed && (
-        <button className="mx-4 my-4 flex items-center gap-2 px-4 py-2.5 bg-white hover:bg-gray-50 border border-gray-300 rounded-md text-sm font-medium text-gray-700 transition-colors">
+        <button className="mx-4 my-4 flex items-center gap-2 px-4 py-2.5 bg-white hover:bg-gray-50 border border-gray-300 rounded-md text-sm font-medium text-gray-700 transition-colors flex-shrink-0">
           <Plus className="w-4 h-4" />
           <span>Create</span>
         </button>
       )}
 
-      <nav className="flex-1 overflow-y-auto">
+      <nav className="flex-1 overflow-y-auto min-h-0">
         <NavItem
           icon={<Home className="w-5 h-5" />}
           label="Home"
@@ -137,7 +137,7 @@ export default function Sidebar({ collapsed, onToggle, onNavigate, currentPage }
 
       <button
         onClick={onToggle}
-        className="p-4 border-t border-gray-200 flex items-center justify-center hover:bg-gray-100 transition-colors"
+        className="p-4 border-t border-gray-200 flex items-center justify-center hover:bg-gray-100 transition-colors flex-shrink-0"
       >
         {collapsed ? (
           <ChevronRight className="w-5 h-5 text-gray-600" />
